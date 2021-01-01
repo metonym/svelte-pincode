@@ -4,6 +4,8 @@
 
 > Declarative pincode component for Svelte.
 
+Try it in the [Svelte REPL](https://svelte.dev/repl/2841eef46bfb49c4a848a2a063602e5d?version=3.31.0).
+
 <!-- TOC -->
 
 ## Quick Start

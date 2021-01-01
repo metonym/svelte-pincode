@@ -37,6 +37,10 @@ export default () => {
       transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
     }
 
+    .complete {
+      font-weight: 700;
+    }
+
     .success {
       color: #24a148;
     }
