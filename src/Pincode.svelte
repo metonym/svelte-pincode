@@ -1,0 +1,120 @@
+<script>
+  /**
+   * @typedef {string[]} Code
+   * @event {{ code: Code; value: string; }} complete
+   */
+
+  /** @type {Code} */
+  export let code = [];
+
+  export let value = "";
+
+  import { setContext, createEventDispatcher } from "svelte";
+  import { writable, derived } from "svelte/store";
+
+  const dispatch = createEventDispatcher();
+  const _ids = writable([]);
+  const _valuesById = derived(_ids, (_) => {
+    return _.reduce((a, c) => ({ ...a, [c.id]: c.value }), {});
+  });
+
+  let ref = null;
+
+  function setCode() {
+    code = $_ids.map((_) => _.value || "");
+  }
+
+  setContext("Pincode", {
+    _valuesById,
+    add: (id, value) => {
+      let _code = [...code];
+
+      _ids.update((_) => {
+        if (code[_.length] === undefined) {
+          _code[_.length] = value;
+        } else {
+          _code[_.length] = _code[_.length] || value;
+        }
+
+        return [
+          ..._,
+          {
+            id,
+            value: code[_.length] || value,
+          },
+        ];
+      });
+
+      code = _code;
+    },
+    remove: (id) => {
+      _ids.update((_) => _.filter((_id) => _id.id !== id));
+      setCode();
+    },
+    update: (id, value) => {
+      const idx = $_ids.map((_) => _.id).indexOf(id);
+
+      _ids.update((_) => {
+        return _.map((_id, i) => {
+          if (i === idx) return { ..._id, value };
+          return _id;
+        });
+      });
+
+      setCode();
+
+      const inputs = ref.querySelectorAll("input");
+      const nextInput = inputs[idx + 1];
+
+      if (nextInput) nextInput.focus();
+      if (code.filter(Boolean).length === $_ids.length) {
+        dispatch("complete", { code, value });
+      }
+    },
+    clear: (id) => {
+      const idx = $_ids.map((_) => _.id).indexOf(id);
+
+      if (!$_ids[idx].value) {
+        const inputs = ref.querySelectorAll("input");
+        const prevInput = inputs[idx - 1];
+
+        if (prevInput) {
+          prevInput.focus();
+          prevInput.select();
+        }
+      }
+
+      _ids.update((_) => {
+        return _.map((_id, i) => {
+          if (i === idx) return { ..._id, value: "" };
+          return _id;
+        });
+      });
+
+      setCode();
+    },
+  });
+
+  $: value = code.join("");
+
+  $: if (code) {
+    _ids.update((_) => {
+      return _.map((_id, i) => ({ ..._id, value: code[i] }));
+    });
+  }
+
+  $: if (code.length === 0) {
+    _ids.update((_) => _.map((_id) => ({ ..._id, value: "" })));
+  }
+</script>
+
+<style>
+  [data-pincode] {
+    display: inline-flex;
+    border: 1px solid #e0e0e0;
+  }
+</style>
+
+<div data-pincode bind:this="{ref}" {...$$restProps}>
+  <slot />
+</div>
