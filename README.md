@@ -246,14 +246,17 @@ input:not(:last-of-type) {
 
 #### Props
 
-| Prop name | Value                      |
-| :-------- | :------------------------- |
-| code      | `string[]` (default: `[]`) |
-| value     | `string` (default: `""`)   |
+| Prop name           | Value                      |
+| :------------------ | :------------------------- |
+| code                | `string[]` (default: `[]`) |
+| value               | `string` (default: `""`)   |
+| focusFirstInput     | `() => void`               |
+| focusNextEmptyInput | `() => void`               |
+| focusLastInput      | `() => void`               |
 
 #### Dispatched Events
 
-- on:complete: fired when all inputs have a value
+- **on:complete**: fired when all inputs have a value
 
 ```html
 <Pincode
