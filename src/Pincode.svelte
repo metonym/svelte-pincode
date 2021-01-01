@@ -9,6 +9,26 @@
 
   export let value = "";
 
+  /** @type {() => void} */
+  export const focusFirstInput = () => {
+    ref.querySelector("input").focus();
+  };
+
+  /** @type {() => void} */
+  export const focusNextEmptyInput = () => {
+    for (const input of ref.querySelectorAll("input")) {
+      if (input.value.length === 0) {
+        input.focus();
+        break;
+      }
+    }
+  };
+
+  /** @type {() => void} */
+  export const focusLastInput = () => {
+    ref.querySelector("input:last-of-type").focus();
+  };
+
   import { setContext, createEventDispatcher } from "svelte";
   import { writable, derived } from "svelte/store";
 

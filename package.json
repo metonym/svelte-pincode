@@ -1,8 +1,8 @@
 {
   "name": "svelte-pincode",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
-  "description": "Declarative pincode component for Svelte",
+  "description": "Pincode component for Svelte",
   "author": "Eric Liu (https://github.com/metonym)",
   "svelte": "./src/index.js",
   "main": "./lib/index.js",

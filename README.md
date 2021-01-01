@@ -2,7 +2,7 @@
 
 [![NPM][npm]][npm-url]
 
-> Declarative pincode component for Svelte.
+> Pincode component for Svelte.
 
 Try it in the [Svelte REPL](https://svelte.dev/repl/2841eef46bfb49c4a848a2a063602e5d?version=3.31.0).
 
@@ -123,9 +123,88 @@ Type in some initial values and then try setting or clearing the code using the 
 
 <div>code: <code>{JSON.stringify(passcode)}</code></div>
 
-<button type="button" on:click={() => passcode = ['1', '2', '3', '4']}>Set code</button>
+<button type="button" on:click={() => passcode = ['1', '2', '3', '4']}>
+  Set code
+</button>
 
-<button type="button" on:click={() => passcode = ['', '', '', '']}>Clear code</button>
+<button type="button" on:click={() => passcode = ['', '', '', '']}>
+  Clear code
+</button>
+```
+<!-- prettier-ignore-end -->
+
+### Focus first input
+
+To programmatically focus the first input, invoke the `focusFirstInput` method on a component reference.
+
+<!-- prettier-ignore-start -->
+```svelte
+<script>
+  let ref;
+</script>
+
+<Pincode bind:this={ref}>
+  <PincodeInput />
+  <PincodeInput />
+  <PincodeInput />
+  <PincodeInput />
+</Pincode>
+
+<br />
+
+<button type="button" on:click={ref.focusFirstInput}>
+  Focus first input
+</button>
+```
+<!-- prettier-ignore-end -->
+
+### Focus next empty input
+
+To focus the next input with no value, invoke the `focusNextEmptyInput` method.
+
+<!-- prettier-ignore-start -->
+```svelte
+<script>
+  let pincodeRef;
+</script>
+
+<Pincode code={["9", "9"]} bind:this={pincodeRef}>
+  <PincodeInput />
+  <PincodeInput />
+  <PincodeInput />
+  <PincodeInput />
+</Pincode>
+
+<br />
+
+<button type="button" on:click={pincodeRef.focusNextEmptyInput}>
+  Focus next empty input
+</button>
+```
+<!-- prettier-ignore-end -->
+
+### Focus last input
+
+To focus the last input, invoke the `focusLastInput` method.
+
+<!-- prettier-ignore-start -->
+```svelte
+<script>
+  let passcodeRef;
+</script>
+
+<Pincode bind:this={passcodeRef}>
+  <PincodeInput />
+  <PincodeInput />
+  <PincodeInput />
+  <PincodeInput />
+</Pincode>
+
+<br />
+
+<button type="button" on:click={passcodeRef.focusLastInput}>
+  Focus last input
+</button>
 ```
 <!-- prettier-ignore-end -->
 
