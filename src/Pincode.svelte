@@ -9,6 +9,12 @@
 
   export let value = "";
 
+  /** @type {"alphanumeric" | "numeric"} */
+  export let type = "alphanumeric";
+
+  /** `true` if all inputs have a value */
+  export let complete = false;
+
   /** @type {() => void} */
   export const focusFirstInput = () => {
     ref.querySelector("input").focus();
@@ -29,7 +35,7 @@
     ref.querySelector("input:last-of-type").focus();
   };
 
-  import { setContext, createEventDispatcher } from "svelte";
+  import { setContext, createEventDispatcher, tick } from "svelte";
   import { writable, derived } from "svelte/store";
 
   const dispatch = createEventDispatcher();
@@ -37,6 +43,7 @@
   const _valuesById = derived(_ids, (_) => {
     return _.reduce((a, c) => ({ ...a, [c.id]: c.value }), {});
   });
+  const _type = writable(type);
 
   let ref = null;
 
@@ -44,8 +51,26 @@
     code = $_ids.map((_) => _.value || "");
   }
 
+  function focusNextInput(idx) {
+    const inputs = ref.querySelectorAll("input");
+
+    if (idx === inputs.length - 1) {
+      return inputs[idx].blur();
+    }
+
+    const nextInput = inputs[idx + 1];
+
+    if (nextInput) nextInput.focus();
+  }
+
   setContext("Pincode", {
+    _type,
     _valuesById,
+    focusNextInput: (id) => {
+      const idx = $_ids.map((_) => _.id).indexOf(id);
+
+      focusNextInput(idx);
+    },
     add: (id, value) => {
       let _code = [...code];
 
@@ -71,25 +96,22 @@
       _ids.update((_) => _.filter((_id) => _id.id !== id));
       setCode();
     },
-    update: (id, value) => {
+    update: async (id, input_value) => {
       const idx = $_ids.map((_) => _.id).indexOf(id);
 
       _ids.update((_) => {
         return _.map((_id, i) => {
-          if (i === idx) return { ..._id, value };
+          if (i === idx) return { ..._id, value: input_value };
           return _id;
         });
       });
 
       setCode();
+      focusNextInput(idx);
 
-      const inputs = ref.querySelectorAll("input");
-      const nextInput = inputs[idx + 1];
+      await tick();
 
-      if (nextInput) nextInput.focus();
-      if (code.filter(Boolean).length === $_ids.length) {
-        dispatch("complete", { code, value });
-      }
+      if (complete) dispatch("complete", { code, value });
     },
     clear: (id) => {
       const idx = $_ids.map((_) => _.id).indexOf(id);
@@ -115,6 +137,8 @@
     },
   });
 
+  $: _type.set(type);
+
   $: value = code.join("");
 
   $: if (code) {
@@ -126,6 +150,8 @@
   $: if (code.length === 0) {
     _ids.update((_) => _.map((_id) => ({ ..._id, value: "" })));
   }
+
+  $: complete = code.filter(Boolean).length === $_ids.length;
 </script>
 
 <style>

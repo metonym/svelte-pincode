@@ -15,6 +15,17 @@ export interface PincodeProps extends svelte.JSX.HTMLAttributes<HTMLElementTagNa
   value?: string;
 
   /**
+   * @default "alphanumeric"
+   */
+  type?: "alphanumeric" | "numeric";
+
+  /**
+   * `true` if all inputs have a value
+   * @default false
+   */
+  complete?: boolean;
+
+  /**
    * @constant
    * @default () => { ref.querySelector("input").focus(); }
    */

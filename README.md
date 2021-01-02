@@ -22,8 +22,8 @@ npm i -D svelte-pincode
 
 Bind to either the `code` or `value` prop.
 
-- **`code`** (`string[]`): Array of input values. An empty string represents an undefined value.
-- **`value`** (`string`): The `code` props as a string (i.e., `code.join('')`)
+- **`code`** (`string[]`): Array of input values. An empty string represents an undefined value
+- **`value`** (`string`): `code` joined as a string
 
 <!-- prettier-ignore-start -->
 ```svelte
@@ -43,6 +43,23 @@ Bind to either the `code` or `value` prop.
 
 <div>code: <code>{JSON.stringify(code)}</code></div>
 <div>value: <code>{JSON.stringify(value)}</code></div>
+```
+<!-- prettier-ignore-end -->
+
+### Numeric variant
+
+By default, this component accepts alphanumeric values.
+
+Set `type` to `"numeric"` to only allow numbers.
+
+<!-- prettier-ignore-start -->
+```svelte
+<Pincode type="numeric">
+  <PincodeInput />
+  <PincodeInput />
+  <PincodeInput />
+  <PincodeInput />
+</Pincode>
 ```
 <!-- prettier-ignore-end -->
 
@@ -67,11 +84,11 @@ Define intitial input values by using the `code` prop or `value` prop on `Pincod
 ```
 <!-- prettier-ignore-end -->
 
-### Completion & error states
+### Validating upon completion
 
-This example illustrates how you can validate the code once all inputs have a value.
+Actual validation is left to the consumer.
 
-`value` is simply the `code` array joined as a string.
+This example illustrates how you can validate the code once all inputs have a value by binding to the `complete` prop.
 
 <!-- prettier-ignore-start -->
 ```svelte
@@ -79,13 +96,13 @@ This example illustrates how you can validate the code once all inputs have a va
   const correctCode = "1234";
 
   let inputValue = '';
+  let complete = false;
 
-  $: complete = inputValue.length === correctCode.length;
   $: success = complete && inputValue === correctCode;
   $: error = complete && !success;
 </script>
 
-<Pincode bind:value={inputValue}>
+<Pincode bind:complete bind:value={inputValue}>
   <PincodeInput />
   <PincodeInput />
   <PincodeInput />
@@ -101,6 +118,16 @@ This example illustrates how you can validate the code once all inputs have a va
 </div>
 ```
 <!-- prettier-ignore-end -->
+
+As an alternative to the `complete` prop, you can listen to the dispatched "complete" event:
+
+```html
+<Pincode
+  on:complete="{(e) => {
+    console.log(e.detail); // { code: string[]; value: string; }
+  }}"
+/>
+```
 
 ### Programmatic usage
 
@@ -246,13 +273,14 @@ input:not(:last-of-type) {
 
 #### Props
 
-| Prop name           | Value                      |
-| :------------------ | :------------------------- |
-| code                | `string[]` (default: `[]`) |
-| value               | `string` (default: `""`)   |
-| focusFirstInput     | `() => void`               |
-| focusNextEmptyInput | `() => void`               |
-| focusLastInput      | `() => void`               |
+| Prop name           | Value                                                      |
+| :------------------ | :--------------------------------------------------------- |
+| code                | `string[]` (default: `[]`)                                 |
+| value               | `string` (default: `""`)                                   |
+| type                | `"alphanumeric"` or `"numeric"` (defaul: `"alhpanumeric"`) |
+| focusFirstInput     | `() => void`                                               |
+| focusNextEmptyInput | `() => void`                                               |
+| focusLastInput      | `() => void`                                               |
 
 #### Dispatched Events
 
@@ -268,6 +296,8 @@ input:not(:last-of-type) {
 
 ### PincodeInput
 
+#### Props
+
 | Prop name | Value                                                      |
 | :-------- | :--------------------------------------------------------- |
 | id        | `string` (default: `"input" + Math.random().toString(36)`) |
@@ -277,12 +307,11 @@ input:not(:last-of-type) {
 
 - on:focus
 - on:blur
-- on:input
 - on:keydown
 
 ## TypeScript
 
-To use this component with TypeScript, you will need `svelte` version 3.31 or greater.
+`svelte` version 3.31 or greater is required to use this component with TypeScript.
 
 ## Changelog
 
