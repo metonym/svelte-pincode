@@ -20,10 +20,6 @@ export interface PincodeInputProps extends svelte.JSX.HTMLAttributes<HTMLElement
 
 export default class PincodeInput extends SvelteComponentTyped<
   PincodeInputProps,
-  {
-    focus: WindowEventMap["focus"];
-    blur: WindowEventMap["blur"];
-    keydown: WindowEventMap["keydown"];
-  },
+  { focus: WindowEventMap["focus"]; blur: WindowEventMap["blur"]; keydown: WindowEventMap["keydown"] },
   {}
 > {}

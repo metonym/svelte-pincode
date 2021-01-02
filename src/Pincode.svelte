@@ -15,6 +15,8 @@
   /** `true` if all inputs have a value */
   export let complete = false;
 
+  export let selectTextOnFocus = false;
+
   /** @type {() => void} */
   export const focusFirstInput = () => {
     ref.querySelector("input").focus();
@@ -44,6 +46,7 @@
     return _.reduce((a, c) => ({ ...a, [c.id]: c.value }), {});
   });
   const _type = writable(type);
+  const _selectTextOnFocus = writable(selectTextOnFocus);
 
   let ref = null;
 
@@ -65,6 +68,7 @@
 
   setContext("Pincode", {
     _type,
+    _selectTextOnFocus,
     _valuesById,
     focusNextInput: (id) => {
       const idx = $_ids.map((_) => _.id).indexOf(id);
@@ -138,9 +142,9 @@
   });
 
   $: _type.set(type);
-
+  $: _selectTextOnFocus.set(selectTextOnFocus);
   $: value = code.join("");
-
+  $: complete = code.filter(Boolean).length === $_ids.length;
   $: if (code) {
     _ids.update((_) => {
       return _.map((_id, i) => ({ ..._id, value: code[i] }));
@@ -150,8 +154,6 @@
   $: if (code.length === 0) {
     _ids.update((_) => _.map((_id) => ({ ..._id, value: "" })));
   }
-
-  $: complete = code.filter(Boolean).length === $_ids.length;
 </script>
 
 <style>

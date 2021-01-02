@@ -7,10 +7,14 @@
   import { getContext, onMount } from "svelte";
 
   let type;
+  let selectTextOnFocus;
 
   const ctx = getContext("Pincode");
   const unsubscribeType = ctx._type.subscribe((_type) => {
     type = _type;
+  });
+  const unsubscribeSelectTextOnFocus = ctx._selectTextOnFocus.subscribe((_selectTextOnFocus) => {
+    selectTextOnFocus = _selectTextOnFocus;
   });
 
   let unsubscribe = undefined;
@@ -26,6 +30,7 @@
       ctx.remove(id);
       unsubscribe();
       unsubscribeType();
+      unsubscribeSelectTextOnFocus();
     };
   });
 </script>
@@ -58,6 +63,9 @@
   maxlength="1"
   value="{value}"
   on:focus
+  on:focus="{() => {
+    if (selectTextOnFocus) ref.select();
+  }}"
   on:blur
   on:keydown
   on:keydown|preventDefault="{(e) => {

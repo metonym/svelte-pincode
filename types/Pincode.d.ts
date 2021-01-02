@@ -26,6 +26,11 @@ export interface PincodeProps extends svelte.JSX.HTMLAttributes<HTMLElementTagNa
   complete?: boolean;
 
   /**
+   * @default false
+   */
+  selectTextOnFocus?: boolean;
+
+  /**
    * @constant
    * @default () => { ref.querySelector("input").focus(); }
    */

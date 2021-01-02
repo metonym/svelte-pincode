@@ -46,6 +46,21 @@ Bind to either the `code` or `value` prop.
 ```
 <!-- prettier-ignore-end -->
 
+### Select text on focus
+
+Set `selectTextOnFocus` to `true` for the input value text to be selected when focused.
+
+<!-- prettier-ignore-start -->
+```svelte
+<Pincode selectTextOnFocus>
+  <PincodeInput />
+  <PincodeInput />
+  <PincodeInput />
+  <PincodeInput />
+</Pincode>
+```
+<!-- prettier-ignore-end -->
+
 ### Numeric variant
 
 By default, this component accepts alphanumeric values.
@@ -160,7 +175,7 @@ Type in some initial values and then try setting or clearing the code using the 
 ```
 <!-- prettier-ignore-end -->
 
-### Focus first input
+### Focusing the first input
 
 To programmatically focus the first input, invoke the `focusFirstInput` method on a component reference.
 
@@ -185,7 +200,7 @@ To programmatically focus the first input, invoke the `focusFirstInput` method o
 ```
 <!-- prettier-ignore-end -->
 
-### Focus next empty input
+### Focusing the next empty input
 
 To focus the next input with no value, invoke the `focusNextEmptyInput` method.
 
@@ -210,7 +225,7 @@ To focus the next input with no value, invoke the `focusNextEmptyInput` method.
 ```
 <!-- prettier-ignore-end -->
 
-### Focus last input
+### Focusing the last input
 
 To focus the last input, invoke the `focusLastInput` method.
 
@@ -273,14 +288,15 @@ input:not(:last-of-type) {
 
 #### Props
 
-| Prop name           | Value                                                      |
-| :------------------ | :--------------------------------------------------------- |
-| code                | `string[]` (default: `[]`)                                 |
-| value               | `string` (default: `""`)                                   |
-| type                | `"alphanumeric"` or `"numeric"` (defaul: `"alhpanumeric"`) |
-| focusFirstInput     | `() => void`                                               |
-| focusNextEmptyInput | `() => void`                                               |
-| focusLastInput      | `() => void`                                               |
+| Prop name           | Value                                                       |
+| :------------------ | :---------------------------------------------------------- |
+| code                | `string[]` (default: `[]`)                                  |
+| value               | `string` (default: `""`)                                    |
+| type                | `"alphanumeric"` or `"numeric"` (default: `"alhpanumeric"`) |
+| selectTextOnFocus   | `boolean` (default: `false`)                                |
+| focusFirstInput     | `() => void`                                                |
+| focusNextEmptyInput | `() => void`                                                |
+| focusLastInput      | `() => void`                                                |
 
 #### Dispatched Events
 
