@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add option to `selectTextOnFocus`
 
+## [1.0.0](https://github.com/metonym/svelte-pincode/releases/tag/v1.0.0) - 2021-01-02
+
+**Features**
+
+- add Pincode `type` prop; default value is "alphanumeric"
+- support numeric variant by setting `type="numeric"`
+- add reactive Pincode `complete` prop
+- remove forwarded `input` event from PincodeInput
+
+**Fixes**
+
+- fix the incorrect value being dispatched in the `on:complete` event detail
+
 ## [0.2.0](https://github.com/metonym/svelte-pincode/releases/tag/v0.2.0) - 2021-01-01
 
 - Add `focusFirstInput`, `focusNextEmptyInput`, `focusLastInput` methods
