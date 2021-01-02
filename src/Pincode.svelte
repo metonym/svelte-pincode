@@ -51,9 +51,26 @@
     code = $_ids.map((_) => _.value || "");
   }
 
+  function focusNextInput(idx) {
+    const inputs = ref.querySelectorAll("input");
+
+    if (idx === inputs.length - 1) {
+      return inputs[idx].blur();
+    }
+
+    const nextInput = inputs[idx + 1];
+
+    if (nextInput) nextInput.focus();
+  }
+
   setContext("Pincode", {
     _type,
     _valuesById,
+    focusNextInput: (id) => {
+      const idx = $_ids.map((_) => _.id).indexOf(id);
+
+      focusNextInput(idx);
+    },
     add: (id, value) => {
       let _code = [...code];
 
@@ -90,11 +107,7 @@
       });
 
       setCode();
-
-      const inputs = ref.querySelectorAll("input");
-      const nextInput = inputs[idx + 1];
-
-      if (nextInput) nextInput.focus();
+      focusNextInput(idx);
 
       await tick();
 

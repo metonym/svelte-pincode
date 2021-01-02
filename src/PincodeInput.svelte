@@ -61,6 +61,8 @@
   on:blur
   on:keydown
   on:keydown|preventDefault="{(e) => {
+    if (e.key === 'Tab') return ctx.focusNextInput(id);
+
     if (e.key === 'Backspace') return ctx.clear(id);
 
     if (type === 'numeric' && /^[0-9]$/.test(e.key)) {
