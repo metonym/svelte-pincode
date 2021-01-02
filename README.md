@@ -22,8 +22,8 @@ npm i -D svelte-pincode
 
 Bind to either the `code` or `value` prop.
 
-- **`code`** (`string[]`): Array of input values. An empty string represents an undefined value.
-- **`value`** (`string`): The `code` props as a string (i.e., `code.join('')`)
+- **`code`** (`string[]`): Array of input values. An empty string represents an undefined value
+- **`value`** (`string`): `code` joined as a string
 
 <!-- prettier-ignore-start -->
 ```svelte
@@ -50,7 +50,7 @@ Bind to either the `code` or `value` prop.
 
 By default, this component accepts alphanumeric values.
 
-Set `type="numeric"` to only allow numbers (i.e., `0-9`).
+Set `type` to `"numeric"` to only allow numbers.
 
 <!-- prettier-ignore-start -->
 ```svelte
@@ -84,13 +84,11 @@ Define intitial input values by using the `code` prop or `value` prop on `Pincod
 ```
 <!-- prettier-ignore-end -->
 
-### Completion & error states
+### Validating upon completion
 
-Validation is left to the consumer.
+Actual validation is left to the consumer.
 
-This example illustrates how you can validate the code once all inputs have a value.
-
-`value` is simply the `code` array joined as a string.
+This example illustrates how you can validate the code once all inputs have a value by binding to the `complete` prop.
 
 <!-- prettier-ignore-start -->
 ```svelte
@@ -98,13 +96,13 @@ This example illustrates how you can validate the code once all inputs have a va
   const correctCode = "1234";
 
   let inputValue = '';
+  let complete = false;
 
-  $: complete = inputValue.length === correctCode.length;
   $: success = complete && inputValue === correctCode;
   $: error = complete && !success;
 </script>
 
-<Pincode bind:value={inputValue}>
+<Pincode bind:complete bind:value={inputValue}>
   <PincodeInput />
   <PincodeInput />
   <PincodeInput />
@@ -120,6 +118,16 @@ This example illustrates how you can validate the code once all inputs have a va
 </div>
 ```
 <!-- prettier-ignore-end -->
+
+As an alternative to the `complete` prop, you can listen to the dispatched "complete" event:
+
+```html
+<Pincode
+  on:complete="{(e) => {
+    console.log(e.detail); // { code: string[]; value: string; }
+  }}"
+/>
+```
 
 ### Programmatic usage
 

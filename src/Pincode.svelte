@@ -12,6 +12,9 @@
   /** @type {"alphanumeric" | "numeric"} */
   export let type = "alphanumeric";
 
+  /** `true` if all inputs have a value */
+  export let complete = false;
+
   /** @type {() => void} */
   export const focusFirstInput = () => {
     ref.querySelector("input").focus();
@@ -32,7 +35,7 @@
     ref.querySelector("input:last-of-type").focus();
   };
 
-  import { setContext, createEventDispatcher } from "svelte";
+  import { setContext, createEventDispatcher, tick } from "svelte";
   import { writable, derived } from "svelte/store";
 
   const dispatch = createEventDispatcher();
@@ -76,12 +79,12 @@
       _ids.update((_) => _.filter((_id) => _id.id !== id));
       setCode();
     },
-    update: (id, value) => {
+    update: async (id, input_value) => {
       const idx = $_ids.map((_) => _.id).indexOf(id);
 
       _ids.update((_) => {
         return _.map((_id, i) => {
-          if (i === idx) return { ..._id, value };
+          if (i === idx) return { ..._id, value: input_value };
           return _id;
         });
       });
@@ -92,9 +95,10 @@
       const nextInput = inputs[idx + 1];
 
       if (nextInput) nextInput.focus();
-      if (code.filter(Boolean).length === $_ids.length) {
-        dispatch("complete", { code, value });
-      }
+
+      await tick();
+
+      if (complete) dispatch("complete", { code, value });
     },
     clear: (id) => {
       const idx = $_ids.map((_) => _.id).indexOf(id);
@@ -133,6 +137,8 @@
   $: if (code.length === 0) {
     _ids.update((_) => _.map((_id) => ({ ..._id, value: "" })));
   }
+
+  $: complete = code.filter(Boolean).length === $_ids.length;
 </script>
 
 <style>
