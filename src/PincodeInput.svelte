@@ -6,7 +6,12 @@
 
   import { getContext, onMount } from "svelte";
 
+  let type;
+
   const ctx = getContext("Pincode");
+  const unsubscribeType = ctx._type.subscribe((_type) => {
+    type = _type;
+  });
 
   let unsubscribe = undefined;
 
@@ -20,6 +25,7 @@
     return () => {
       ctx.remove(id);
       unsubscribe();
+      unsubscribeType();
     };
   });
 </script>
@@ -46,22 +52,23 @@
 <input
   bind:this="{ref}"
   {...$$restProps}
-  type="text"
-  inputmode="numeric"
-  pattern="[0-9]{1}"
+  type="{type === 'numeric' ? 'number' : 'text'}"
+  inputmode="{type === 'numeric' ? 'numeric' : 'text'}"
+  pattern="{type === 'numeric' ? '[0-9]{1}' : '^[a-zA-Z0-9]$'}"
   maxlength="1"
   value="{value}"
   on:focus
   on:blur
-  on:input
-  on:input="{(e) => {
-    ctx.update(id, e.target.value);
-  }}"
   on:keydown
-  on:keydown="{(e) => {
-    if (e.key === 'Backspace') {
-      e.preventDefault();
-      ctx.clear(id);
+  on:keydown|preventDefault="{(e) => {
+    if (e.key === 'Backspace') return ctx.clear(id);
+
+    if (type === 'numeric' && /^[0-9]$/.test(e.key)) {
+      ctx.update(id, e.key);
+    }
+
+    if (type === 'alphanumeric' && /^[a-zA-Z0-9]$/.test(e.key)) {
+      ctx.update(id, e.key);
     }
   }}"
 />

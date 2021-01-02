@@ -9,6 +9,9 @@
 
   export let value = "";
 
+  /** @type {"alphanumeric" | "numeric"} */
+  export let type = "alphanumeric";
+
   /** @type {() => void} */
   export const focusFirstInput = () => {
     ref.querySelector("input").focus();
@@ -37,6 +40,7 @@
   const _valuesById = derived(_ids, (_) => {
     return _.reduce((a, c) => ({ ...a, [c.id]: c.value }), {});
   });
+  const _type = writable(type);
 
   let ref = null;
 
@@ -45,6 +49,7 @@
   }
 
   setContext("Pincode", {
+    _type,
     _valuesById,
     add: (id, value) => {
       let _code = [...code];
@@ -114,6 +119,8 @@
       setCode();
     },
   });
+
+  $: _type.set(type);
 
   $: value = code.join("");
 

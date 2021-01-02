@@ -46,6 +46,23 @@ Bind to either the `code` or `value` prop.
 ```
 <!-- prettier-ignore-end -->
 
+### Numeric variant
+
+By default, this component accepts alphanumeric values.
+
+Set `type="numeric"` to only allow numbers (i.e., `0-9`).
+
+<!-- prettier-ignore-start -->
+```svelte
+<Pincode type="numeric">
+  <PincodeInput />
+  <PincodeInput />
+  <PincodeInput />
+  <PincodeInput />
+</Pincode>
+```
+<!-- prettier-ignore-end -->
+
 ### Initial values
 
 Define intitial input values by using the `code` prop or `value` prop on `PincodeInput`.
@@ -68,6 +85,8 @@ Define intitial input values by using the `code` prop or `value` prop on `Pincod
 <!-- prettier-ignore-end -->
 
 ### Completion & error states
+
+Validation is left to the consumer.
 
 This example illustrates how you can validate the code once all inputs have a value.
 
@@ -246,13 +265,14 @@ input:not(:last-of-type) {
 
 #### Props
 
-| Prop name           | Value                      |
-| :------------------ | :------------------------- |
-| code                | `string[]` (default: `[]`) |
-| value               | `string` (default: `""`)   |
-| focusFirstInput     | `() => void`               |
-| focusNextEmptyInput | `() => void`               |
-| focusLastInput      | `() => void`               |
+| Prop name           | Value                                                      |
+| :------------------ | :--------------------------------------------------------- |
+| code                | `string[]` (default: `[]`)                                 |
+| value               | `string` (default: `""`)                                   |
+| type                | `"alphanumeric"` or `"numeric"` (defaul: `"alhpanumeric"`) |
+| focusFirstInput     | `() => void`                                               |
+| focusNextEmptyInput | `() => void`                                               |
+| focusLastInput      | `() => void`                                               |
 
 #### Dispatched Events
 
@@ -268,6 +288,8 @@ input:not(:last-of-type) {
 
 ### PincodeInput
 
+#### Props
+
 | Prop name | Value                                                      |
 | :-------- | :--------------------------------------------------------- |
 | id        | `string` (default: `"input" + Math.random().toString(36)`) |
@@ -277,12 +299,11 @@ input:not(:last-of-type) {
 
 - on:focus
 - on:blur
-- on:input
 - on:keydown
 
 ## TypeScript
 
-To use this component with TypeScript, you will need `svelte` version 3.31 or greater.
+`svelte` version 3.31 or greater is required to use this component with TypeScript.
 
 ## Changelog
 

@@ -23,7 +23,6 @@ export default class PincodeInput extends SvelteComponentTyped<
   {
     focus: WindowEventMap["focus"];
     blur: WindowEventMap["blur"];
-    input: WindowEventMap["input"];
     keydown: WindowEventMap["keydown"];
   },
   {}
