@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ## Unreleased -->
 
+## [1.1.1](https://github.com/metonym/svelte-pincode/releases/tag/v1.1.1) - 2021-01-03
+
+- use default behavior for Tab key
+
 ## [1.1.0](https://github.com/metonym/svelte-pincode/releases/tag/v1.1.0) - 2021-01-02
 
 - add Pincode `selectTextOnFocus` prop to select the text when focusing the input element
