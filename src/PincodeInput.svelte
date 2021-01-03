@@ -68,17 +68,22 @@
   }}"
   on:blur
   on:keydown
-  on:keydown|preventDefault="{(e) => {
-    if (e.key === 'Tab') return ctx.focusNextInput(id);
-
-    if (e.key === 'Backspace') return ctx.clear(id);
-
-    if (type === 'numeric' && /^[0-9]$/.test(e.key)) {
-      ctx.update(id, e.key);
+  on:keydown="{(e) => {
+    if (e.key === 'Backspace') {
+      e.preventDefault();
+      return ctx.clear(id);
     }
 
-    if (type === 'alphanumeric' && /^[a-zA-Z0-9]$/.test(e.key)) {
-      ctx.update(id, e.key);
+    if (e.key !== 'Tab') {
+      e.preventDefault();
+
+      if (type === 'numeric' && /^[0-9]$/.test(e.key)) {
+        ctx.update(id, e.key);
+      }
+
+      if (type === 'alphanumeric' && /^[a-zA-Z0-9]$/.test(e.key)) {
+        ctx.update(id, e.key);
+      }
     }
   }}"
 />

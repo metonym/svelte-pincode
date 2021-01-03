@@ -56,11 +56,6 @@
 
   function focusNextInput(idx) {
     const inputs = ref.querySelectorAll("input");
-
-    if (idx === inputs.length - 1) {
-      return inputs[idx].blur();
-    }
-
     const nextInput = inputs[idx + 1];
 
     if (nextInput) nextInput.focus();
