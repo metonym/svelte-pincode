@@ -1,5 +1,7 @@
 # svelte-pincode
 
+<!-- REPO_URL -->
+
 [![NPM][npm]][npm-url]
 
 > Pincode component for Svelte.
