@@ -294,7 +294,7 @@ input:not(:last-of-type) {
 | :------------------ | :---------------------------------------------------------- |
 | code                | `string[]` (default: `[]`)                                  |
 | value               | `string` (default: `""`)                                    |
-| type                | `"alphanumeric"` or `"numeric"` (default: `"alhpanumeric"`) |
+| type                | `"alphanumeric"` or `"numeric"` (default: `"alphanumeric"`) |
 | selectTextOnFocus   | `boolean` (default: `false`)                                |
 | focusFirstInput     | `() => void`                                                |
 | focusNextEmptyInput | `() => void`                                                |
