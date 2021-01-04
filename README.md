@@ -1,16 +1,20 @@
 # svelte-pincode
 
-<!-- REPO_URL -->
-
 [![NPM][npm]][npm-url]
 
 > Pincode component for Svelte.
 
+A pin code is a short sequence of characters (usually numeric) used for verification. It differs from a password in that it is typically ephemeral (e.g., invalid after 5 minutes) and not determined by the user.
+
 Try it in the [Svelte REPL](https://svelte.dev/repl/2841eef46bfb49c4a848a2a063602e5d?version=3.31.0).
+
+<!-- REPO_URL -->
+
+---
 
 <!-- TOC -->
 
-## Quick Start
+## Install
 
 ```bash
 yarn add -D svelte-pincode
@@ -54,12 +58,22 @@ Set `selectTextOnFocus` to `true` for the input value text to be selected when f
 
 <!-- prettier-ignore-start -->
 ```svelte
+<script>
+  let input;
+</script>
+
 <Pincode selectTextOnFocus>
-  <PincodeInput />
+  <PincodeInput bind:ref={input} value="0" />
   <PincodeInput />
   <PincodeInput />
   <PincodeInput />
 </Pincode>
+
+<br />
+
+<button type="button" on:click={() => input.focus()}>
+  Focus input
+</button>
 ```
 <!-- prettier-ignore-end -->
 
