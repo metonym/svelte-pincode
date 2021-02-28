@@ -2,13 +2,13 @@
 
 [![NPM][npm]][npm-url]
 
-> Pincode component for Svelte.
+> Declarative pin code component for Svelte.
+
+<!-- REPO_URL -->
 
 A pin code is a short sequence of characters (usually numeric) used for verification. It differs from a password in that it is typically ephemeral and is not predetermined by the user.
 
 Try it in the [Svelte REPL](https://svelte.dev/repl/2841eef46bfb49c4a848a2a063602e5d?version=3.31.0).
-
-<!-- REPO_URL -->
 
 ---
 
@@ -28,8 +28,8 @@ npm i -D svelte-pincode
 
 Bind to either the `code` or `value` prop.
 
-- **`code`** (`string[]`): Array of input values. An empty string represents an undefined value
-- **`value`** (`string`): `code` joined as a string
+- **code** (`string[]`): Array of input values. An empty string represents an undefined value
+- **value** (`string`): `code` joined as a string
 
 <!-- prettier-ignore-start -->
 ```svelte

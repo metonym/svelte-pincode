@@ -2,7 +2,7 @@
   "name": "svelte-pincode",
   "version": "1.1.1",
   "license": "MIT",
-  "description": "Pincode component for Svelte",
+  "description": "Declarative pin code component for Svelte",
   "author": "Eric Liu (https://github.com/metonym)",
   "svelte": "./src/index.js",
   "main": "./lib/index.js",
@@ -14,12 +14,12 @@
     "predeploy": "rollup -c",
     "deploy": "npx gh-pages -d dist",
     "prepack": "BUNDLE=true rollup -c",
-    "svelte-check": "svelte-check"
+    "test": "svelte-check"
   },
   "devDependencies": {
-    "svelte": "^3.31.2",
-    "svelte-check": "^1.1.24",
-    "svelte-readme": "^2.2.0"
+    "svelte": "^3.34.0",
+    "svelte-check": "^1.1.36",
+    "svelte-readme": "^3.0.0"
   },
   "repository": {
     "type": "git",
