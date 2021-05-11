@@ -1,2 +1,2 @@
-export { default as Pincode } from "./Pincode";
-export { default as PincodeInput } from "./PincodeInput";
+export { default as Pincode } from "./Pincode.svelte";
+export { default as PincodeInput } from "./PincodeInput.svelte";

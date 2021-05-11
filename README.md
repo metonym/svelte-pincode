@@ -268,19 +268,19 @@ To focus the last input, invoke the `focusLastInput` method.
 
 ## Styling
 
-This component is minimally styled.
+### Customization
 
-Default styles:
+This component is minimally styled; override the default styles by targeting the `data-pincode` selector:
 
 ```css
 /** Pincode **/
-[data-pincode] {
+:global([data-pincode]) {
   display: inline-flex;
   border: 1px solid #e0e0e0;
 }
 
 /** PincodeInput */
-input {
+:global([data-pincode] input) {
   width: 3rem;
   padding: 0.5rem 1rem;
   margin: 0;
@@ -289,13 +289,24 @@ input {
   text-align: center;
 }
 
-input:focus {
+:global([data-pincode] input:focus) {
   z-index: 1;
 }
 
-input:not(:last-of-type) {
+:global([data-pincode] input:not(:last-of-type)) {
   border-right: 1px solid #e0e0e0;
 }
+```
+
+### Unstyled components
+
+Alternatively, you can use the unstyled components located in the `svelte/src/unstyled` folder.
+
+```html
+<script>
+  import Pincode from "svelte-pincode/src/unstyled/Pincode.svelte";
+  import PincodeInput from "svelte-pincode/src/unstyled/PincodeInput.svelte";
+</script>
 ```
 
 ## API
