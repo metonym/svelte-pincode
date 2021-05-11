@@ -7,11 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ## Unreleased -->
 
+## [1.2.0](https://github.com/metonym/svelte-pincode/releases/tag/v1.2.0) - 2021-05-11
+
+**Features**
+
+- ship unstyled Pincode components (available in the `svelte-pincode/src/unstyled` folder)
+
 ## [1.1.1](https://github.com/metonym/svelte-pincode/releases/tag/v1.1.1) - 2021-01-03
+
+**Fixes**
 
 - use default behavior for Tab key
 
 ## [1.1.0](https://github.com/metonym/svelte-pincode/releases/tag/v1.1.0) - 2021-01-02
+
+**Fixes**
 
 - add Pincode `selectTextOnFocus` prop to select the text when focusing the input element
 
@@ -30,8 +40,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0](https://github.com/metonym/svelte-pincode/releases/tag/v0.2.0) - 2021-01-01
 
-- Add `focusFirstInput`, `focusNextEmptyInput`, `focusLastInput` methods
+**Features**
+
+- add `focusFirstInput`, `focusNextEmptyInput`, `focusLastInput` methods
 
 ## [0.1.0](https://github.com/metonym/svelte-pincode/releases/tag/v0.1.0) - 2021-01-01
 
-- Initial release
+- initial release
