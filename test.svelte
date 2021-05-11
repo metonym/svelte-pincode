@@ -2,7 +2,9 @@
   import { onMount } from "svelte";
 
   import { Pincode, PincodeInput } from "./types";
-  import { Code } from "./types/Pincode";
+  import { Code } from "./types/Pincode.svelte";
+  import UPincode from "./types/src/unstyled/Pincode.svelte";
+  import UPincodeInput from "./types/src/unstyled/PincodeInput.svelte";
 
   const correctCode = "1234";
 
@@ -22,6 +24,7 @@
 </script>
 
 <Pincode
+  type="numeric"
   bind:this="{ref}"
   bind:code
   bind:value
@@ -40,3 +43,15 @@
   {#if success}Correct code!{/if}
   {#if error}Incorrect code.{/if}
 </div>
+
+<UPincode
+  type="numeric"
+  bind:this="{ref}"
+  bind:code
+  bind:value
+  on:complete="{(e) => {
+    console.log(e.detail);
+  }}"
+>
+  <UPincodeInput on:focus on:blur on:input on:keydown />
+</UPincode>
