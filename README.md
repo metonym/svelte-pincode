@@ -8,7 +8,7 @@
 
 A pin code is a short sequence of characters (usually numeric) used for verification. It differs from a password in that it is typically ephemeral and is not predetermined by the user.
 
-Try it in the [Svelte REPL](https://svelte.dev/repl/2841eef46bfb49c4a848a2a063602e5d?version=3.31.0).
+Try it in the [Svelte REPL](https://svelte.dev/repl/2841eef46bfb49c4a848a2a063602e5d).
 
 ---
 
