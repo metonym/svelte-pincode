@@ -132,17 +132,14 @@
     },
   });
 
-  function handlePaste(e) {
-    let paste = (event.clipboardData || window.clipboardData).getData("text") ?? "";
-    if (paste.length == $_ids.length) {
-      code = paste.split("");
-    }
+  function handleInput(e) {
+    let input = e.data || e.target.value;
+    if (!input) return;
+    input = input.trim();
+    if (input.length === 1) return;
+    if (input.length !== $_ids.length) return;
+    code = input.split("");
   }
-
-  onMount(() => {
-    ref.addEventListener("paste", handlePaste);
-    return () => ref.removeEventListener("paste", handlePaste);
-  });
 
   $: _type.set(type);
   $: _selectTextOnFocus.set(selectTextOnFocus);
@@ -160,7 +157,7 @@
   }
 </script>
 
-<div data-pincode bind:this="{ref}" {...$$restProps}>
+<div data-pincode bind:this="{ref}" {...$$restProps} on:input="{handleInput}">
   <slot />
 </div>
 

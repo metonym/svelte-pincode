@@ -49,6 +49,7 @@
   }}"
   on:blur
   on:keydown
+  on:input
   on:keydown="{(e) => {
     if (e.key === 'Backspace') {
       e.preventDefault();
