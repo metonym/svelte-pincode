@@ -107,10 +107,6 @@
 
       setCode();
       focusNextInput(idx);
-
-      await tick();
-
-      if (complete) dispatch("complete", { code, value });
     },
     clear: (id) => {
       const idx = $_ids.map((_) => _.id).indexOf(id);
@@ -152,6 +148,7 @@
   $: _selectTextOnFocus.set(selectTextOnFocus);
   $: value = code.join("");
   $: complete = code.filter(Boolean).length === $_ids.length;
+  $: complete && dispatch("complete", { code, value });
   $: if (code) {
     _ids.update((_) => {
       return _.map((_id, i) => ({ ..._id, value: code[i] }));
