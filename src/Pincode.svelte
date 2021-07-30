@@ -37,7 +37,7 @@
     ref.querySelector("input:last-of-type").focus();
   };
 
-  import { setContext, createEventDispatcher, tick } from "svelte";
+  import { setContext, createEventDispatcher, tick, onMount } from "svelte";
   import { writable, derived } from "svelte/store";
 
   const dispatch = createEventDispatcher();
@@ -134,6 +134,18 @@
 
       setCode();
     },
+  });
+
+  function handlePaste(e) {
+    let paste = (event.clipboardData || window.clipboardData).getData("text") ?? "";
+    if (paste.length == $_ids.length) {
+      code = paste.split("");
+    }
+  }
+
+  onMount(() => {
+    ref.addEventListener("paste", handlePaste);
+    return () => ref.removeEventListener("paste", handlePaste);
   });
 
   $: _type.set(type);
