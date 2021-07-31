@@ -157,6 +157,6 @@
   }
 </script>
 
-<div data-pincode bind:this="{ref}" {...$$restProps}>
+<div data-pincode bind:this="{ref}" {...$$restProps} on:input="{handleInput}">
   <slot />
 </div>
