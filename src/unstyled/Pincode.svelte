@@ -37,7 +37,7 @@
     ref.querySelector("input:last-of-type").focus();
   };
 
-  import { setContext, createEventDispatcher, tick, onMount } from "svelte";
+  import { setContext, createEventDispatcher } from "svelte";
   import { writable, derived } from "svelte/store";
 
   const dispatch = createEventDispatcher();
