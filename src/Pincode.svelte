@@ -37,7 +37,7 @@
     ref.querySelector("input:last-of-type").focus();
   };
 
-  import { setContext, createEventDispatcher, tick } from "svelte";
+  import { setContext, createEventDispatcher, tick, onMount } from "svelte";
   import { writable, derived } from "svelte/store";
 
   const dispatch = createEventDispatcher();
@@ -107,10 +107,6 @@
 
       setCode();
       focusNextInput(idx);
-
-      await tick();
-
-      if (complete) dispatch("complete", { code, value });
     },
     clear: (id) => {
       const idx = $_ids.map((_) => _.id).indexOf(id);
@@ -136,10 +132,20 @@
     },
   });
 
+  function handleInput(e) {
+    let input = e.data || e.target.value;
+    if (!input) return;
+    input = input.trim();
+    if (input.length === 1) return;
+    if (input.length !== $_ids.length) return;
+    code = input.split("");
+  }
+
   $: _type.set(type);
   $: _selectTextOnFocus.set(selectTextOnFocus);
   $: value = code.join("");
   $: complete = code.filter(Boolean).length === $_ids.length;
+  $: complete && dispatch("complete", { code, value });
   $: if (code) {
     _ids.update((_) => {
       return _.map((_id, i) => ({ ..._id, value: code[i] }));
@@ -151,7 +157,7 @@
   }
 </script>
 
-<div data-pincode bind:this="{ref}" {...$$restProps}>
+<div data-pincode bind:this="{ref}" {...$$restProps} on:input="{handleInput}">
   <slot />
 </div>
 
