@@ -1,10 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import { Pincode, PincodeInput } from "./types";
-  import { Code } from "./types/Pincode.svelte";
-  import UPincode from "./types/src/unstyled/Pincode.svelte";
-  import UPincodeInput from "./types/src/unstyled/PincodeInput.svelte";
+  import { Pincode, PincodeInput } from "../types";
+  import { Code } from "../types/Pincode.svelte";
+  import UPincode from "../types/src/unstyled/Pincode.svelte";
+  import UPincodeInput from "../types/src/unstyled/PincodeInput.svelte";
 
   const correctCode = "1234";
 
