@@ -14,11 +14,17 @@ Try it in the [Svelte REPL](https://svelte.dev/repl/2841eef46bfb49c4a848a2a06360
 
 <!-- TOC -->
 
-## Install
+## Installation
+
+**Yarn**
 
 ```bash
 yarn add -D svelte-pincode
-# OR
+```
+
+**NPM**
+
+```bash
 npm i -D svelte-pincode
 ```
 
@@ -71,7 +77,7 @@ Set `selectTextOnFocus` to `true` for the input value text to be selected when f
 
 <br />
 
-<button type="button" on:click={() => input.focus()}>
+<button on:click={() => input.focus()}>
   Focus input
 </button>
 ```
@@ -181,11 +187,11 @@ Type in some initial values and then try setting or clearing the code using the 
 
 <div>code: <code>{JSON.stringify(passcode)}</code></div>
 
-<button type="button" on:click={() => passcode = ['1', '2', '3', '4']}>
+<button on:click={() => passcode = ['1', '2', '3', '4']}>
   Set code
 </button>
 
-<button type="button" on:click={() => passcode = ['', '', '', '']}>
+<button on:click={() => passcode = ['', '', '', '']}>
   Clear code
 </button>
 ```
@@ -210,7 +216,7 @@ To programmatically focus the first input, invoke the `focusFirstInput` method o
 
 <br />
 
-<button type="button" on:click={ref.focusFirstInput}>
+<button on:click={ref.focusFirstInput}>
   Focus first input
 </button>
 ```
@@ -235,7 +241,7 @@ To focus the next input with no value, invoke the `focusNextEmptyInput` method.
 
 <br />
 
-<button type="button" on:click={pincodeRef.focusNextEmptyInput}>
+<button on:click={pincodeRef.focusNextEmptyInput}>
   Focus next empty input
 </button>
 ```
@@ -260,7 +266,7 @@ To focus the last input, invoke the `focusLastInput` method.
 
 <br />
 
-<button type="button" on:click={passcodeRef.focusLastInput}>
+<button on:click={passcodeRef.focusLastInput}>
   Focus last input
 </button>
 ```
@@ -315,15 +321,18 @@ Alternatively, you can use the unstyled components located in the `svelte/src/un
 
 #### Props
 
-| Prop name           | Value                                                       |
-| :------------------ | :---------------------------------------------------------- |
-| code                | `string[]` (default: `[]`)                                  |
-| value               | `string` (default: `""`)                                    |
-| type                | `"alphanumeric"` or `"numeric"` (default: `"alphanumeric"`) |
-| selectTextOnFocus   | `boolean` (default: `false`)                                |
-| focusFirstInput     | `() => void`                                                |
-| focusNextEmptyInput | `() => void`                                                |
-| focusLastInput      | `() => void`                                                |
+| Prop name         | Value                           | Default          |
+| :---------------- | :------------------------------ | :--------------- |
+| code              | `string[]`                      | `[]`             |
+| value             | `string`                        | `""`             |
+| type              | `"alphanumeric"` or `"numeric"` | `"alphanumeric"` |
+| selectTextOnFocus | `boolean`                       | `false`          |
+
+#### Accessors
+
+- `focusFirstInput`
+- `focusNextEmptyInput`
+- `focusLastInput`
 
 #### Dispatched Events
 
@@ -354,7 +363,9 @@ Alternatively, you can use the unstyled components located in the `svelte/src/un
 
 ## TypeScript
 
-`svelte` version 3.31 or greater is required to use this component with TypeScript.
+Svelte version 3.31 or greater is required to use this component with TypeScript.
+
+TypeScript definitions are located in the [types folder](./types).
 
 ## Changelog
 
