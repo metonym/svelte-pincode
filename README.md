@@ -65,6 +65,8 @@ Set `selectTextOnFocus` to `true` for the input value text to be selected when f
 <!-- prettier-ignore-start -->
 ```svelte
 <script>
+  import { Pincode, PincodeInput } from "svelte-pincode";
+
   let input;
 </script>
 
@@ -107,6 +109,8 @@ Define intitial input values by using the `code` prop or `value` prop on `Pincod
 <!-- prettier-ignore-start -->
 ```svelte
 <script>
+  import { Pincode, PincodeInput } from "svelte-pincode";
+
   let pincode = ["1", "", "3"];
 </script>
 
@@ -130,6 +134,8 @@ This example illustrates how you can validate the code once all inputs have a va
 <!-- prettier-ignore-start -->
 ```svelte
 <script>
+  import { Pincode, PincodeInput } from "svelte-pincode";
+
   const correctCode = "1234";
 
   let inputValue = '';
@@ -175,6 +181,8 @@ Type in some initial values and then try setting or clearing the code using the 
 <!-- prettier-ignore-start -->
 ```svelte
 <script>
+  import { Pincode, PincodeInput } from "svelte-pincode";
+
   let passcode = [];
 </script>
 
@@ -204,6 +212,8 @@ To programmatically focus the first input, invoke the `focusFirstInput` method o
 <!-- prettier-ignore-start -->
 ```svelte
 <script>
+  import { Pincode, PincodeInput } from "svelte-pincode";
+
   let ref;
 </script>
 
@@ -229,6 +239,8 @@ To focus the next input with no value, invoke the `focusNextEmptyInput` method.
 <!-- prettier-ignore-start -->
 ```svelte
 <script>
+  import { Pincode, PincodeInput } from "svelte-pincode";
+
   let pincodeRef;
 </script>
 
@@ -254,6 +266,8 @@ To focus the last input, invoke the `focusLastInput` method.
 <!-- prettier-ignore-start -->
 ```svelte
 <script>
+  import { Pincode, PincodeInput } from "svelte-pincode";
+
   let passcodeRef;
 </script>
 
@@ -338,7 +352,7 @@ Alternatively, you can use the unstyled components located in the `svelte/src/un
 
 - **on:complete**: fired when all inputs have a value
 
-```html
+```svelte no-eval
 <Pincode
   on:complete="{(e) => {
     console.log(e.detail); // { code: string[]; value: string; }
