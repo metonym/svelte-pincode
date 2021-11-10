@@ -40,8 +40,8 @@ pnpm i -D svelte-pincode
 
 Bind to either the `code` or `value` prop.
 
-- **code** (`string[]`): Array of input values. An empty string represents an undefined value
-- **value** (`string`): `code` joined as a string
+- **code** (`string[]`): Array of input values. An empty string represents an undefined value.
+- **value** (`string`): `code` joined as a string.
 
 <!-- prettier-ignore-start -->
 ```svelte
