@@ -1,3 +1,1 @@
-import PincodeInput from "../../PincodeInput.svelte";
-
-export default PincodeInput;
+export { default, PincodeInputProps } from "../PincodeInput.svelte";

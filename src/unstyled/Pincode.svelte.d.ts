@@ -1,3 +1,1 @@
-import Pincode from "../../Pincode.svelte";
-
-export default Pincode;
+export { default, Code, PincodeProps } from "../Pincode.svelte";
