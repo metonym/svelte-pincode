@@ -5,15 +5,13 @@
   "description": "Declarative pin code component for Svelte",
   "author": "Eric Liu (https://github.com/metonym)",
   "svelte": "./src/index.js",
-  "main": "./lib/index.js",
-  "module": "./lib/index.mjs",
+  "main": "./src/index.js",
   "types": "./types/index.d.ts",
   "sideEffects": false,
   "scripts": {
     "dev": "rollup -cw",
     "predeploy": "rollup -c",
     "deploy": "npx gh-pages -d dist",
-    "prepack": "BUNDLE=true rollup -c",
     "test": "svelte-check --workspace test"
   },
   "devDependencies": {
@@ -35,7 +33,6 @@
     "input"
   ],
   "files": [
-    "lib",
     "src",
     "types"
   ],
