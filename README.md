@@ -170,7 +170,7 @@ This example illustrates how you can validate the code once all inputs have a va
 
 As an alternative to the `complete` prop, you can listen to the dispatched "complete" event:
 
-```html
+```svelte no-eval
 <Pincode
   on:complete="{(e) => {
     console.log(e.detail); // { code: string[]; value: string; }
