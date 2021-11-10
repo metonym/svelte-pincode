@@ -335,7 +335,7 @@ Alternatively, you can use the unstyled components located in the `svelte/src/un
 
 #### Props
 
-| Prop name         | Value                           | Default          |
+| Name              | Value                           | Default          |
 | :---------------- | :------------------------------ | :--------------- |
 | code              | `string[]`                      | `[]`             |
 | value             | `string`                        | `""`             |
@@ -378,8 +378,6 @@ Alternatively, you can use the unstyled components located in the `svelte/src/un
 ## TypeScript
 
 Svelte version 3.31 or greater is required to use this component with TypeScript.
-
-TypeScript definitions are located in the [types folder](./types).
 
 ## Changelog
 
