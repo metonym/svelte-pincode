@@ -83,8 +83,6 @@ Set `selectTextOnFocus` to `true` for the input value text to be selected when f
   <PincodeInput />
 </Pincode>
 
-<br />
-
 <button on:click={() => input.focus()}>
   Focus input
 </button>
@@ -230,8 +228,6 @@ To programmatically focus the first input, invoke the `focusFirstInput` method o
   <PincodeInput />
 </Pincode>
 
-<br />
-
 <button on:click={ref.focusFirstInput}>
   Focus first input
 </button>
@@ -257,8 +253,6 @@ To focus the next input with no value, invoke the `focusNextEmptyInput` method.
   <PincodeInput />
 </Pincode>
 
-<br />
-
 <button on:click={pincodeRef.focusNextEmptyInput}>
   Focus next empty input
 </button>
@@ -283,8 +277,6 @@ To focus the last input, invoke the `focusLastInput` method.
   <PincodeInput />
   <PincodeInput />
 </Pincode>
-
-<br />
 
 <button on:click={passcodeRef.focusLastInput}>
   Focus last input

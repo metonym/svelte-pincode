@@ -17,5 +17,10 @@ export default svelteReadme({
     .error {
       color: #da1e28;
     }
+
+    .code-fence button {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
  `,
 });
