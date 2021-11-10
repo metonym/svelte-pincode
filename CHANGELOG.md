@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ## Unreleased -->
 
+## [2.0.0](https://github.com/metonym/svelte-pincode/releases/tag/v2.0.0) - 2021-11-10
+
+**Breaking Changes**
+
+- drop support for ESM/UMD formats
+- move type definitions to the `src` folder
+
+**Fixes**
+
+- export non-default props in unstyled component types
+
 ## [1.3.0](https://github.com/metonym/svelte-pincode/releases/tag/v1.3.0) - 2021-07-31
 
 **Features**
