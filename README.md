@@ -28,6 +28,12 @@ yarn add -D svelte-pincode
 npm i -D svelte-pincode
 ```
 
+**pnpm**
+
+```bash
+pnpm i -D svelte-pincode
+```
+
 ## Usage
 
 ### Basic
