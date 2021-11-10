@@ -1,16 +1,16 @@
 <script lang="ts">
   import { onMount } from "svelte";
-
-  import { Pincode, PincodeInput } from "../types";
-  import { Code } from "../types/Pincode.svelte";
-  import UPincode from "../types/src/unstyled/Pincode.svelte";
-  import UPincodeInput from "../types/src/unstyled/PincodeInput.svelte";
+  import { Pincode, PincodeInput } from "../src";
+  import { Code } from "../src/Pincode.svelte";
+  import UPincode, { Code as Code2 } from "../src/unstyled/Pincode.svelte";
+  import UPincodeInput, { PincodeInputProps } from "../src/unstyled/PincodeInput.svelte";
 
   const correctCode = "1234";
 
   let ref: Pincode;
-  let code: Code = [];
+  let code: Code | Code2 = [];
   let value = "";
+  let inputProps: PincodeInputProps = { value: "" };
 
   $: complete = value.length === correctCode.length;
   $: success = complete && value === correctCode;
@@ -33,7 +33,7 @@
   }}"
 >
   <PincodeInput on:focus on:blur on:input on:keydown />
-  <PincodeInput />
+  <PincodeInput {...inputProps} />
   <PincodeInput />
   <PincodeInput />
 </Pincode>

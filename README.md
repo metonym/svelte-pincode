@@ -28,14 +28,20 @@ yarn add -D svelte-pincode
 npm i -D svelte-pincode
 ```
 
+**pnpm**
+
+```bash
+pnpm i -D svelte-pincode
+```
+
 ## Usage
 
 ### Basic
 
 Bind to either the `code` or `value` prop.
 
-- **code** (`string[]`): Array of input values. An empty string represents an undefined value
-- **value** (`string`): `code` joined as a string
+- **code** (`string[]`): Array of input values. An empty string represents an undefined value.
+- **value** (`string`): `code` joined as a string.
 
 <!-- prettier-ignore-start -->
 ```svelte
@@ -76,8 +82,6 @@ Set `selectTextOnFocus` to `true` for the input value text to be selected when f
   <PincodeInput />
   <PincodeInput />
 </Pincode>
-
-<br />
 
 <button on:click={() => input.focus()}>
   Focus input
@@ -156,15 +160,15 @@ This example illustrates how you can validate the code once all inputs have a va
   {#if !complete}
     Enter {correctCode.length - inputValue.length} more digit(s)...
   {/if}
-  {#if success}Correct code!{/if}
-  {#if error}Incorrect code.{/if}
+  {#if success}Correct code{/if}
+  {#if error}Incorrect code{/if}
 </div>
 ```
 <!-- prettier-ignore-end -->
 
-As an alternative to the `complete` prop, you can listen to the dispatched "complete" event:
+Use the dispatched "complete" event as an alternative to binding the `complete` prop.
 
-```html
+```svelte no-eval
 <Pincode
   on:complete="{(e) => {
     console.log(e.detail); // { code: string[]; value: string; }
@@ -176,7 +180,7 @@ As an alternative to the `complete` prop, you can listen to the dispatched "comp
 
 `code` can be set programmatically.
 
-Type in some initial values and then try setting or clearing the code using the buttons.
+In the following example, type some initial values and try setting or clearing the code.
 
 <!-- prettier-ignore-start -->
 ```svelte
@@ -207,7 +211,7 @@ Type in some initial values and then try setting or clearing the code using the 
 
 ### Focusing the first input
 
-To programmatically focus the first input, invoke the `focusFirstInput` method on a component reference.
+To programmatically focus the first input, invoke the `focusFirstInput` method in a component reference.
 
 <!-- prettier-ignore-start -->
 ```svelte
@@ -223,8 +227,6 @@ To programmatically focus the first input, invoke the `focusFirstInput` method o
   <PincodeInput />
   <PincodeInput />
 </Pincode>
-
-<br />
 
 <button on:click={ref.focusFirstInput}>
   Focus first input
@@ -251,8 +253,6 @@ To focus the next input with no value, invoke the `focusNextEmptyInput` method.
   <PincodeInput />
 </Pincode>
 
-<br />
-
 <button on:click={pincodeRef.focusNextEmptyInput}>
   Focus next empty input
 </button>
@@ -277,8 +277,6 @@ To focus the last input, invoke the `focusLastInput` method.
   <PincodeInput />
   <PincodeInput />
 </Pincode>
-
-<br />
 
 <button on:click={passcodeRef.focusLastInput}>
   Focus last input
@@ -320,7 +318,7 @@ This component is minimally styled; override the default styles by targeting the
 
 ### Unstyled components
 
-Alternatively, you can use the unstyled components located in the `svelte/src/unstyled` folder.
+Use the unstyled components located in the `svelte/src/unstyled` folder if you prefer to style the components from scratch.
 
 ```html
 <script>
@@ -335,7 +333,7 @@ Alternatively, you can use the unstyled components located in the `svelte/src/un
 
 #### Props
 
-| Prop name         | Value                           | Default          |
+| Name              | Value                           | Default          |
 | :---------------- | :------------------------------ | :--------------- |
 | code              | `string[]`                      | `[]`             |
 | value             | `string`                        | `""`             |
@@ -364,10 +362,10 @@ Alternatively, you can use the unstyled components located in the `svelte/src/un
 
 #### Props
 
-| Prop name | Value                                                      |
-| :-------- | :--------------------------------------------------------- |
-| id        | `string` (default: `"input" + Math.random().toString(36)`) |
-| ref       | `HTMLInputElement` (default: `null`)                       |
+| Name | Type               | Default value                          |
+| :--- | :----------------- | :------------------------------------- |
+| id   | `string`           | `"input" + Math.random().toString(36)` |
+| ref  | `HTMLInputElement` | `null`                                 |
 
 #### Forwarded Events
 
@@ -378,8 +376,6 @@ Alternatively, you can use the unstyled components located in the `svelte/src/un
 ## TypeScript
 
 Svelte version 3.31 or greater is required to use this component with TypeScript.
-
-TypeScript definitions are located in the [types folder](./types).
 
 ## Changelog
 
