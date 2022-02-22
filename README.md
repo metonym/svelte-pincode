@@ -333,7 +333,7 @@ Use the unstyled components located in the `svelte/src/unstyled` folder if you p
 
 #### Props
 
-| Name              | Value                           | Default          |
+| Name              | Type                            | Default value    |
 | :---------------- | :------------------------------ | :--------------- |
 | code              | `string[]`                      | `[]`             |
 | value             | `string`                        | `""`             |
