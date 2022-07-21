@@ -16,8 +16,16 @@
   const unsubscribeSelectTextOnFocus = ctx._selectTextOnFocus.subscribe((_selectTextOnFocus) => {
     selectTextOnFocus = _selectTextOnFocus;
   });
+  const KEYBOARD = {
+    CONTROL: 17,
+    COMMAND: 91,
+    V: 86,
+    TAB: 9,
+    BACKSPACE: 8,
+  };
 
   let unsubscribe = undefined;
+  let modifierKeyDown = false;
 
   onMount(() => {
     ctx.add(id, value);
@@ -50,12 +58,20 @@
   on:blur
   on:keydown
   on:keydown="{(e) => {
-    if (e.key === 'Backspace') {
+    if (e.key === KEYBOARD.BACKSPACE) {
       e.preventDefault();
       return ctx.clear(id);
     }
 
-    if (e.key !== 'Tab') {
+    if (e.key == KEYBOARD.CONTROL || e.key == KEYBOARD.COMMAND) {
+      modifierKeyDown = true;
+    }
+
+    if (e.key == KEYBOARD.V && modifierKeyDown) {
+      return;
+    }
+
+    if (e.key !== KEYBOARD.TAB) {
       e.preventDefault();
 
       if (type === 'numeric' && /^[0-9]$/.test(e.key)) {
@@ -65,6 +81,11 @@
       if (type === 'alphanumeric' && /^[a-zA-Z0-9]$/.test(e.key)) {
         ctx.update(id, e.key);
       }
+    }
+  }}"
+  on:keyup="{(e) => {
+    if (e.key == KEYBOARD.CONTROL || e.key == KEYBOARD.COMMAND) {
+      modifierKeyDown = false;
     }
   }}"
 />
