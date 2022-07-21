@@ -58,20 +58,20 @@
   on:blur
   on:keydown
   on:keydown="{(e) => {
-    if (e.key === KEYBOARD.BACKSPACE) {
+    if (e.keyCode === KEYBOARD.BACKSPACE) {
       e.preventDefault();
       return ctx.clear(id);
     }
 
-    if (e.key == KEYBOARD.CONTROL || e.key == KEYBOARD.COMMAND) {
+    if (e.keyCode == KEYBOARD.CONTROL || e.keyCode == KEYBOARD.COMMAND) {
       modifierKeyDown = true;
     }
 
-    if (e.key == KEYBOARD.V && modifierKeyDown) {
+    if (e.keyCode == KEYBOARD.V && modifierKeyDown) {
       return;
     }
 
-    if (e.key !== KEYBOARD.TAB) {
+    if (e.keyCode !== KEYBOARD.TAB) {
       e.preventDefault();
 
       if (type === 'numeric' && /^[0-9]$/.test(e.key)) {
@@ -84,7 +84,7 @@
     }
   }}"
   on:keyup="{(e) => {
-    if (e.key == KEYBOARD.CONTROL || e.key == KEYBOARD.COMMAND) {
+    if (e.keyCode == KEYBOARD.CONTROL || e.keyCode == KEYBOARD.COMMAND) {
       modifierKeyDown = false;
     }
   }}"
