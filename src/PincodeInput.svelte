@@ -17,11 +17,11 @@
     selectTextOnFocus = _selectTextOnFocus;
   });
   const KEYBOARD = {
-    CONTROL: 17,
-    COMMAND: 91,
-    V: 86,
-    TAB: 9,
-    BACKSPACE: 8,
+    CONTROL: "Control",
+    COMMAND: "Meta",
+    V: "v",
+    TAB: "Tab",
+    BACKSPACE: "Backspace",
   };
 
   let unsubscribe = undefined;
@@ -58,20 +58,20 @@
   on:blur
   on:keydown
   on:keydown="{(e) => {
-    if (e.keyCode === KEYBOARD.BACKSPACE) {
+    if (e.key === KEYBOARD.BACKSPACE) {
       e.preventDefault();
       return ctx.clear(id);
     }
 
-    if (e.keyCode == KEYBOARD.CONTROL || e.keyCode == KEYBOARD.COMMAND) {
+    if (e.key == KEYBOARD.CONTROL || e.key == KEYBOARD.COMMAND) {
       modifierKeyDown = true;
     }
 
-    if (e.keyCode == KEYBOARD.V && modifierKeyDown) {
+    if (e.key == KEYBOARD.V && modifierKeyDown) {
       return;
     }
 
-    if (e.keyCode !== KEYBOARD.TAB) {
+    if (e.key !== KEYBOARD.TAB) {
       e.preventDefault();
 
       if (type === 'numeric' && /^[0-9]$/.test(e.key)) {
@@ -84,7 +84,7 @@
     }
   }}"
   on:keyup="{(e) => {
-    if (e.keyCode == KEYBOARD.CONTROL || e.keyCode == KEYBOARD.COMMAND) {
+    if (e.key == KEYBOARD.CONTROL || e.key == KEYBOARD.COMMAND) {
       modifierKeyDown = false;
     }
   }}"
