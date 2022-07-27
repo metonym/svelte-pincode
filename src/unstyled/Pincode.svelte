@@ -141,6 +141,11 @@
     code = input.split("");
   }
 
+  function handlePaste(e) {
+    e.preventDefault();
+    code = e.clipboardData.getData("text").split("");
+  }
+
   $: _type.set(type);
   $: _selectTextOnFocus.set(selectTextOnFocus);
   $: value = code.join("");
@@ -157,6 +162,6 @@
   }
 </script>
 
-<div data-pincode bind:this="{ref}" {...$$restProps} on:input="{handleInput}">
+<div data-pincode bind:this="{ref}" {...$$restProps} on:input="{handleInput}" on:paste="{handlePaste}">
   <slot />
 </div>
