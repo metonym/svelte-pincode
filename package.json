@@ -15,10 +15,10 @@
     "test": "svelte-check --workspace test"
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3",
-    "svelte": "^3.44.1",
-    "svelte-check": "^2.2.8",
-    "svelte-readme": "^3.6.0"
+    "gh-pages": "^4.0.0",
+    "svelte": "^3.49.0",
+    "svelte-check": "^2.8.1",
+    "svelte-readme": "^3.6.3"
   },
   "repository": {
     "type": "git",
