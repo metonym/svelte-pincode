@@ -143,7 +143,7 @@
 
   function handlePaste(e) {
     e.preventDefault();
-    code = e.clipboardData.getData("text").split("");
+    code = e.clipboardData.getData("text").split("").filter(it => it !== " ");
   }
 
   $: _type.set(type);
