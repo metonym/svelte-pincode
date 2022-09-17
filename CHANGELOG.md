@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ## Unreleased -->
 
+## [2.1.2](https://github.com/metonym/svelte-pincode/releases/tag/v2.1.2) - 2022-09-17
+
+**Fixes**
+
+- set `type: "module"` in `package.json`
+
 ## [2.1.1](https://github.com/metonym/svelte-pincode/releases/tag/v2.1.1) - 2022-08-26
 
 **Fixes**
