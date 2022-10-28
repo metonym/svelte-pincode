@@ -32,7 +32,7 @@
     console.log(e.detail);
   }}"
 >
-  <PincodeInput on:focus on:blur on:input on:keydown />
+  <PincodeInput on:focus on:blur on:keydown />
   <PincodeInput {...inputProps} />
   <PincodeInput />
   <PincodeInput />
@@ -53,5 +53,5 @@
     console.log(e.detail);
   }}"
 >
-  <UPincodeInput on:focus on:blur on:input on:keydown />
+  <UPincodeInput on:focus on:blur on:keydown />
 </UPincode>
