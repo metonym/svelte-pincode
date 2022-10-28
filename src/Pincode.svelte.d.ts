@@ -33,7 +33,10 @@ export interface PincodeProps extends svelte.JSX.HTMLAttributes<HTMLElementTagNa
 
 export default class Pincode extends SvelteComponentTyped<
   PincodeProps,
-  { complete: CustomEvent<{ code: Code; value: string }> },
+  {
+    complete: CustomEvent<{ code: Code; value: string }>;
+    clear: CustomEvent<null>;
+  },
   { default: {} }
 > {
   focusFirstInput?: () => void;

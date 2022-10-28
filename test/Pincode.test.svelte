@@ -31,6 +31,7 @@
   on:complete="{(e) => {
     console.log(e.detail);
   }}"
+  on:clear
 >
   <PincodeInput on:focus on:blur on:keydown />
   <PincodeInput {...inputProps} />
