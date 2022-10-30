@@ -49,6 +49,7 @@
   const _selectTextOnFocus = writable(selectTextOnFocus);
 
   let ref = null;
+  let prevValue = value;
 
   function setCode() {
     code = $_ids.map((_) => _.value || "");
@@ -165,6 +166,14 @@
 
   $: if (code.length === 0) {
     _ids.update((_) => _.map((_id) => ({ ..._id, value: "" })));
+  }
+
+  $: {
+    if (prevValue !== value && value.length === 0) {
+      dispatch("clear");
+    }
+
+    prevValue = value;
   }
 </script>
 

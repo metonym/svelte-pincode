@@ -349,12 +349,14 @@ Use the unstyled components located in the `svelte/src/unstyled` folder if you p
 #### Dispatched Events
 
 - **on:complete**: fired when all inputs have a value
+- **on:clear**: fired when no inputs have a value
 
 ```svelte no-eval
 <Pincode
   on:complete="{(e) => {
     console.log(e.detail); // { code: string[]; value: string; }
   }}"
+  on:clear
 />
 ```
 
