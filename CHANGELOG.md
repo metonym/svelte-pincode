@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ## Unreleased -->
 
+## [2.2.0](https://github.com/metonym/svelte-pincode/releases/tag/v2.2.0) - 2022-10-30
+
+**Features**
+
+- dispatch `clear` event when value is cleared
+
 ## [2.1.3](https://github.com/metonym/svelte-pincode/releases/tag/v2.1.3) - 2022-10-26
 
 **Fixes**
