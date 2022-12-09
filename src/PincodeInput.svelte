@@ -9,6 +9,9 @@
   let type;
   let selectTextOnFocus;
 
+  let userAgent = navigator.userAgent;
+  const android = userAgent?.match(/android/i);
+
   const ctx = getContext("Pincode");
   const unsubscribeType = ctx._type.subscribe((_type) => {
     type = _type;
@@ -56,6 +59,20 @@
     if (selectTextOnFocus) ref.select();
   }}"
   on:blur
+  on:input
+  on:input="{(e) => {
+    if (android) {
+      // Get latest char from the input value
+      const latestChar = e?.target?.value[(e?.target?.value?.length ?? 0) - 1];
+      // Update value according to input type, as was done on the on:keyup event
+      if (type === 'numeric' && /^[0-9]$/.test(latestChar)) {
+        ctx.update(id, latestChar);
+      }
+      if (type === 'alphanumeric' && /^[a-zA-Z0-9]$/.test(latestChar)) {
+        ctx.update(id, latestChar);
+      }
+    }
+  }}"
   on:keydown
   on:keydown="{(e) => {
     if (e.key === KEYBOARD.BACKSPACE) {
@@ -74,12 +91,15 @@
     if (e.key !== KEYBOARD.TAB) {
       e.preventDefault();
 
-      if (type === 'numeric' && /^[0-9]$/.test(e.key)) {
-        ctx.update(id, e.key);
-      }
+      // Do not try to update the value from the keydown event if on android, leave that to the input event
+      if (!android) {
+        if (type === 'numeric' && /^[0-9]$/.test(e.key)) {
+          ctx.update(id, e.key);
+        }
 
-      if (type === 'alphanumeric' && /^[a-zA-Z0-9]$/.test(e.key)) {
-        ctx.update(id, e.key);
+        if (type === 'alphanumeric' && /^[a-zA-Z0-9]$/.test(e.key)) {
+          ctx.update(id, e.key);
+        }
       }
     }
   }}"
