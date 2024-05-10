@@ -4,7 +4,6 @@
   "license": "MIT",
   "description": "Declarative pin code component for Svelte",
   "author": "Eric Liu (https://github.com/metonym)",
-  "svelte": "./src/index.js",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "sideEffects": false,
@@ -41,5 +40,10 @@
     "svelteStrictMode": true,
     "svelteBracketNewLine": true
   },
-  "type": "module"
+  "type": "module",
+  "exports": {
+    ".": {
+      "svelte": "./src/index.js"
+    }
+  }
 }
