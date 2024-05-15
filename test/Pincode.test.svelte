@@ -26,8 +26,8 @@
 <Pincode
   type="numeric"
   bind:this="{ref}"
-  bind:code
-  bind:value
+  bind:code="{code}"
+  bind:value="{value}"
   on:complete="{(e) => {
     console.log(e.detail);
   }}"
@@ -39,7 +39,7 @@
   <PincodeInput />
 </Pincode>
 
-<div class:complete class:success class:error>
+<div class:complete="{complete}" class:success="{success}" class:error="{error}">
   {#if !complete}{correctCode.length - value.length} more...{/if}
   {#if success}Correct code!{/if}
   {#if error}Incorrect code.{/if}
@@ -48,8 +48,8 @@
 <UPincode
   type="numeric"
   bind:this="{ref}"
-  bind:code
-  bind:value
+  bind:code="{code}"
+  bind:value="{value}"
   on:complete="{(e) => {
     console.log(e.detail);
   }}"

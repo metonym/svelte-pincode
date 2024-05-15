@@ -48,10 +48,5 @@
   "files": [
     "src"
   ],
-  "prettier": {
-    "printWidth": 120,
-    "svelteStrictMode": true,
-    "svelteBracketNewLine": true
-  },
   "type": "module"
 }
