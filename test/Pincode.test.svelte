@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { Pincode, PincodeInput } from "../src";
-  import { Code } from "../src/Pincode.svelte";
-  import UPincode, { Code as Code2 } from "../src/unstyled/Pincode.svelte";
-  import UPincodeInput, { PincodeInputProps } from "../src/unstyled/PincodeInput.svelte";
+  import { Pincode, PincodeInput } from "svelte-pincode";
+  import type { Code } from "svelte-pincode/src/Pincode.svelte";
+  import UPincode, { Code as Code2 } from "svelte-pincode/src/unstyled/Pincode.svelte";
+  import UPincodeInput, { type PincodeInputProps } from "svelte-pincode/src/unstyled/PincodeInput.svelte";
 
   const correctCode = "1234";
 
@@ -17,9 +17,9 @@
   $: error = complete && !success;
 
   onMount(() => {
-    ref.focusFirstInput();
-    ref.focusNextEmptyInput();
-    ref.focusLastInput();
+    ref.focusFirstInput?.();
+    ref.focusNextEmptyInput?.();
+    ref.focusLastInput?.();
   });
 </script>
 
