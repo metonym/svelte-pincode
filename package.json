@@ -7,7 +7,21 @@
   "svelte": "./src/index.js",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
-  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "svelte": "./src/index.js"
+    },
+    "./*.svelte": {
+      "types": "./src/*.svelte.d.ts",
+      "import": "./src/*.svelte"
+    },
+    "./unstyled/*.svelte": {
+      "types": "./src/unstyled/*.svelte.d.ts",
+      "import": "./src/*.svelte"
+    }
+  },
   "scripts": {
     "dev": "rollup -cw",
     "predeploy": "rollup -c",
