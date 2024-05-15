@@ -1,9 +1,11 @@
-/// <reference types="svelte" />
-import { SvelteComponentTyped } from "svelte";
+import type { SvelteComponentTyped } from "svelte";
+import type { SvelteHTMLElements } from "svelte/elements";
 
 export type Code = string[];
 
-export interface PincodeProps extends svelte.JSX.HTMLAttributes<HTMLElementTagNameMap["div"]> {
+type RestProps = SvelteHTMLElements["div"];
+
+export interface PincodeProps extends RestProps {
   /**
    * @default []
    */
@@ -29,6 +31,8 @@ export interface PincodeProps extends svelte.JSX.HTMLAttributes<HTMLElementTagNa
    * @default false
    */
   selectTextOnFocus?: boolean;
+
+  [key: `data-${string}`]: any;
 }
 
 export default class Pincode extends SvelteComponentTyped<
@@ -39,7 +43,9 @@ export default class Pincode extends SvelteComponentTyped<
   },
   { default: {} }
 > {
-  focusFirstInput?: () => void;
-  focusNextEmptyInput?: () => void;
-  focusLastInput?: () => void;
+  focusFirstInput: () => void;
+
+  focusNextEmptyInput: () => void;
+
+  focusLastInput: () => void;
 }

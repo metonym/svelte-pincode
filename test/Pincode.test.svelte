@@ -17,9 +17,9 @@
   $: error = complete && !success;
 
   onMount(() => {
-    ref.focusFirstInput?.();
-    ref.focusNextEmptyInput?.();
-    ref.focusLastInput?.();
+    ref.focusFirstInput();
+    ref.focusNextEmptyInput();
+    ref.focusLastInput();
   });
 </script>
 
