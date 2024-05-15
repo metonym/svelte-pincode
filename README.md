@@ -16,22 +16,18 @@ Try it in the [Svelte REPL](https://svelte.dev/repl/2841eef46bfb49c4a848a2a06360
 
 ## Installation
 
-**Yarn**
-
-```bash
-yarn add -D svelte-pincode
-```
-
-**NPM**
-
-```bash
+```sh
+# npm
 npm i -D svelte-pincode
-```
 
-**pnpm**
-
-```bash
+# pnpm
 pnpm i -D svelte-pincode
+
+# Bun
+bun i -D svelte-pincode
+
+# Yarn
+yarn add -D svelte-pincode
 ```
 
 ## Usage
@@ -374,10 +370,6 @@ Use the unstyled components located in the `svelte/src/unstyled` folder if you p
 - on:focus
 - on:blur
 - on:keydown
-
-## TypeScript
-
-Svelte version 3.31 or greater is required to use this component with TypeScript.
 
 ## Changelog
 
