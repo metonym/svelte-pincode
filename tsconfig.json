@@ -1,0 +1,21 @@
+
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "ignoreDeprecations": "5.0",
+    "importsNotUsedAsValues": "error",
+    "isolatedModules": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "types": ["svelte"],
+    "paths": {
+      "svelte-pincode": ["./src"],
+      "svelte-pincode/src/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "test"]
+}
