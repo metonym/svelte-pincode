@@ -1,7 +1,9 @@
-/// <reference types="svelte" />
-import { SvelteComponentTyped } from "svelte";
+import type { SvelteComponentTyped } from "svelte";
+import type { SvelteHTMLElements } from "svelte/elements";
 
-export interface PincodeInputProps extends svelte.JSX.HTMLAttributes<HTMLElementTagNameMap["input"]> {
+type RestProps = SvelteHTMLElements["input"];
+
+export interface PincodeInputProps extends RestProps {
   /**
    * @default ""
    */
@@ -16,10 +18,16 @@ export interface PincodeInputProps extends svelte.JSX.HTMLAttributes<HTMLElement
    * @default null
    */
   ref?: null | HTMLInputElement;
+
+  [key: `data-${string}`]: any;
 }
 
 export default class PincodeInput extends SvelteComponentTyped<
   PincodeInputProps,
-  { focus: WindowEventMap["focus"]; blur: WindowEventMap["blur"]; keydown: WindowEventMap["keydown"] },
+  {
+    focus: WindowEventMap["focus"];
+    blur: WindowEventMap["blur"];
+    keydown: WindowEventMap["keydown"];
+  },
   {}
 > {}
