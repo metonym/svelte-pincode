@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ## Unreleased -->
 
+## [2.2.1](https://github.com/metonym/svelte-pincode/releases/tag/v2.2.1) - 2024-05-14
+
+**Fixes**
+
+- update TypeScript definitions to support Svelte 4
+- add `exports` field to `package.json`
+
 ## [2.2.0](https://github.com/metonym/svelte-pincode/releases/tag/v2.2.0) - 2022-10-30
 
 **Features**
