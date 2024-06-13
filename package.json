@@ -1,6 +1,6 @@
 {
   "name": "svelte-pincode",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "license": "MIT",
   "description": "Declarative pin code component for Svelte",
   "author": "Eric Liu (https://github.com/metonym)",

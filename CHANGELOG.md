@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ## Unreleased -->
 
+## [2.2.2](https://github.com/metonym/svelte-pincode/releases/tag/v2.2.2) - 2024-06-12
+
+**Fixes**
+
+- do not dispatch `complete` event on mount
+- fix `exports` field to correctly map `unstyled/*` components
+
 ## [2.2.1](https://github.com/metonym/svelte-pincode/releases/tag/v2.2.1) - 2024-05-14
 
 **Fixes**
