@@ -314,12 +314,12 @@ This component is minimally styled; override the default styles by targeting the
 
 ### Unstyled components
 
-Use the unstyled components located in the `svelte/src/unstyled` folder if you prefer to style the components from scratch.
+Use the unstyled components located in the `svelte-pincode/unstyled` folder if you prefer to style the components from scratch.
 
 ```html
 <script>
-  import Pincode from "svelte-pincode/src/unstyled/Pincode.svelte";
-  import PincodeInput from "svelte-pincode/src/unstyled/PincodeInput.svelte";
+  import Pincode from "svelte-pincode/unstyled/Pincode.svelte";
+  import PincodeInput from "svelte-pincode/unstyled/PincodeInput.svelte";
 </script>
 ```
 
