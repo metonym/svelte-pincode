@@ -19,7 +19,7 @@
     },
     "./unstyled/*.svelte": {
       "types": "./src/unstyled/*.svelte.d.ts",
-      "import": "./src/*.svelte"
+      "import": "./src/unstyled/*.svelte"
     }
   },
   "scripts": {
