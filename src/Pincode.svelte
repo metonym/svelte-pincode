@@ -72,7 +72,7 @@
       focusNextInput(idx);
     },
     add: (id, value) => {
-      let _code = [...code];
+      const _code = [...code];
 
       _ids.update((_) => {
         if (code[_.length] === undefined) {
@@ -157,7 +157,7 @@
   $: _type.set(type);
   $: _selectTextOnFocus.set(selectTextOnFocus);
   $: value = code.join("");
-  $: complete = code.filter(Boolean).length === $_ids.length;
+  $: complete = code.length > 0 && code.filter(Boolean).length === $_ids.length;
   $: if (code) {
     _ids.update((_) => {
       return _.map((_id, i) => ({ ..._id, value: code[i] }));
